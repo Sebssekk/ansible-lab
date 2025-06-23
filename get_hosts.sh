@@ -1,1 +1,1 @@
-docker inspect ansible-net  --format json | jq '.[].Containers | keys[] as $k | "\(.[$k].IPv4Address) \(.[$k].Name)"' -r > hosts
+docker inspect ansible-net  --format json | jq '.[].Containers | keys[] as $k | "\(.[$k].IPv4Address) \(.[$k].Name)"' -r | sed s'#/16##' 
